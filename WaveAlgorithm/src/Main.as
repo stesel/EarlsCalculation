@@ -20,6 +20,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			if (CONFIG::debug)
+				trace.call(this,"debug");
 		}
 		
 	}
