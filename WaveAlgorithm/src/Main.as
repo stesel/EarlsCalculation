@@ -16,12 +16,14 @@ package
 		{
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
+			
 		}
 		
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			if (CONFIG::debug) trace.call(this,"debug");
 			
 			var matrix:Vector.<Vector.<Number>> = Vector.<Vector.<Number>>([Vector.<Number>([3, 5, 4, 4, 7, 1, 7, 5, 5, 9]),
 																			Vector.<Number>([2, 6, 7, 2, 5, 6, 4, 7, 2, 2]),
