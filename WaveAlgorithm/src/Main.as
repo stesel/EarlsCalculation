@@ -4,6 +4,7 @@ package
 	import display.Vertex;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import load.DataProvider;
 	/**
 	 * ...
 	 * @author Leonid Trofimchuk
@@ -41,6 +42,8 @@ package
 				onGraphBuilt();
 			else
 			graph.addEventListener(Graph.GRAPH_BUILT, onGraphBuilt);
+			
+			var loader:DataProvider = new DataProvider();
 			
 		}
 		
