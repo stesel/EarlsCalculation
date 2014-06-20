@@ -12,6 +12,7 @@ package
 	public class Main extends Sprite 
 	{
 		private var graph:Graph;
+		private var loader:DataProvider;
 		
 		public function Main():void 
 		{
@@ -37,14 +38,18 @@ package
 																			Vector.<Number>([2, 6, 7, 3, 1, 3, 2, 1, 4, 5]),
 																			Vector.<Number>([1, 8, 9, 7, 9, 1, 4, 5, 2, 0])]);
 			
-			graph = new Graph(matrix);
+			loader = new DataProvider();
+			loader.addEventListener(DataProvider.PARSE_COMPLETE, parseComplete);
+			loader.start();
+		}
+		
+		private function parseComplete(e:Event = null):void 
+		{
+			graph = new Graph(loader.matrix);
 			if (graph.built)
 				onGraphBuilt();
 			else
-			graph.addEventListener(Graph.GRAPH_BUILT, onGraphBuilt);
-			
-			var loader:DataProvider = new DataProvider();
-			
+				graph.addEventListener(Graph.GRAPH_BUILT, onGraphBuilt);
 		}
 		
 		private function onGraphBuilt(e:Event = null):void 
